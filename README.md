@@ -25,3 +25,5 @@ The following printers will probably work, but are not tested:
 
  * Brother H500
  * Brother E500
+
+The official source of this repository is at https://git.scc.kit.edu/scc-net/labelprinterkit.
