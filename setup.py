@@ -5,13 +5,12 @@ with open('README.md', 'r') as readme:
 
 setup(
     name="labelprinterkit",
-    version="0.0.1",
     description="A library for creating and printing labels",
     long_description=README_TEXT,
     long_description_content_type="text/markdown",
     url="https://git.scc.kit.edu/scc-net/labelprinterkit",
     author="Adrian Tschira",
-    author_email="nota@notafile.com",
+    author_email="packages@notafile.com",
     classifiers=[
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
@@ -24,4 +23,8 @@ setup(
         'pyusb',
         'packbits',
     ],
+    setup_requires=[
+        'setuptools_scm'
+    ],
+    python_requires='>=3.4'
 )
