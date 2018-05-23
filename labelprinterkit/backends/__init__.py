@@ -1,6 +1,6 @@
 import usb.core
 import usb.util
-
+import threading
 
 def is_usb_printer(dev):
     if dev.bDeviceClass == 7:
@@ -13,6 +13,7 @@ def is_usb_printer(dev):
 class PyUSBBackend():
     def __init__(self, dev):
         self.dev = dev
+        self.lock = threading.Lock()
 
     @classmethod
     def auto(cls):

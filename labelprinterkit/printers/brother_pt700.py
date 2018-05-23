@@ -90,28 +90,17 @@ MEDIA_TYPE_MAP = {
     0xFF: MEDIA_TYPE.INCOMPATIBLE,
 }
 
-MEDIA_WIDTH_MM = {
-    # media ID to tape width
-    0: None,
-    4: 3.5,
-    6: 6.0,
-    9: 9.0,
-    12: 12.0,
-    18: 18.0,
-    24: 24.0,
-}
-
-TapeInfo = namedtuple("TapeInfo", ["lmargin", "printarea", "rmargin"])
+TapeInfo = namedtuple("TapeInfo", ["lmargin", "printarea", "rmargin", "width"])
 
 MEDIA_WIDTH_INFO = {
     # media ID to tape width in dots
-    0: TapeInfo(None, None, None),
-    4: TapeInfo(52, 24, 52),
-    6: TapeInfo(48, 32, 48),
-    9: TapeInfo(39, 50, 39),
-    12: TapeInfo(29, 70, 29),
-    18: TapeInfo(8, 112, 8),
-    24: TapeInfo(0, 128, 0),
+    0: TapeInfo(None, None, None, None),
+    4: TapeInfo(52, 24, 52, 3.5),
+    6: TapeInfo(48, 32, 48, 6.0),
+    9: TapeInfo(39, 50, 39, 9.0),
+    12: TapeInfo(29, 70, 29, 12.0),
+    18: TapeInfo(8, 112, 8, 18.0),
+    24: TapeInfo(0, 128, 0, 24.0),
 }
 
 ERROR_MASK = {
@@ -194,16 +183,17 @@ class P700(BasePrinter):
 
     def get_status(self) -> Status:
         """get status of the printer as ``Status`` object"""
-        self.io.write(b'\x1BiS')
-        data = self.io.read(32)
+        with self.io.lock:
+            self.io.write(b'\x1BiS')
+            data = self.io.read(32)
 
-        if not data:
-            raise IOError("No Response from printer")
+            if not data:
+                raise IOError("No Response from printer")
 
-        if len(data) < 32:
-            raise IOError("Invalid Response from printer")
+            if len(data) < 32:
+                raise IOError("Invalid Response from printer")
 
-        return Status(data)
+            return Status(data)
 
     def _debug_status(self):
         data = self.io.read(32)
@@ -229,8 +219,9 @@ class P700(BasePrinter):
 
         # img.show()
 
-        self._dummy_print(
-            status, batch_iter_bytes(img.tobytes(), ceil(img.size[0] / 8)))
+        with self.io.lock:
+            self._raw_print(
+                status, batch_iter_bytes(img.tobytes(), ceil(img.size[0] / 8)))
         return self.get_status()
 
     def _dummy_print(self, status: Status, document: Iterable[bytes]) -> None:
