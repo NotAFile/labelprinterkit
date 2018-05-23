@@ -1,10 +1,13 @@
 from setuptools import setup, find_packages
 
+with open('README.md', 'r') as readme:
+    README_TEXT = readme.read()
 
 setup(
     name="labelprinterkit",
     version="0.0.1",
     description="A library for creating and printing labels",
+    long_description=README_TEXT,
     long_description_content_type="text/markdown",
     url="https://git.scc.kit.edu/scc-net/labelprinterkit",
     author="Adrian Tschira",

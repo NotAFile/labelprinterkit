@@ -16,7 +16,7 @@ import logging
 import packbits
 from PIL import Image, ImageChops
 
-from labels import Label
+from label import Label
 from . import BasePrinter, BaseStatus, BaseErrorStatus
 
 logger = logging.getLogger(__name__)
