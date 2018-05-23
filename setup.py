@@ -6,6 +6,7 @@ with open('README.md', 'r') as readme:
 setup(
     name="labelprinterkit",
     description="A library for creating and printing labels",
+    use_scm_version=True,
     long_description=README_TEXT,
     long_description_content_type="text/markdown",
     url="https://git.scc.kit.edu/scc-net/labelprinterkit",
