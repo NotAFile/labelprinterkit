@@ -2,7 +2,7 @@ import io
 from abc import ABC, abstractmethod
 from typing import Dict, Tuple
 
-from labels import Label
+from ..label import Label
 
 
 class BaseErrorStatus(ABC):
