@@ -4,8 +4,8 @@ Labelprinterkit is a Python3 library for creating and printing labels. It was
 developed for the Networking department of the KIT (Karlsruhe Institute of
 Technology).
 
-Labelprinterkit's simple layout engine can use it to declaratively create
-Labels:
+Labelprinterkit's simple layout engine can be used to declaratively create
+simple labels:
 
 ```python
 >>> class MyLabel(Label):
