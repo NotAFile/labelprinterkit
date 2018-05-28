@@ -201,6 +201,9 @@ class P700(BasePrinter):
         if data:
             logger.debug(Status(data))
 
+    def get_label_width(self):
+        self.get_status().tape_info.width
+
     def print_label(self, label: Label) -> Status:
         status = self.get_status()
         if not status.ready():
