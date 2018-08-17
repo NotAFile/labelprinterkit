@@ -24,7 +24,8 @@ class BaseStatus(ABC):
     errors = None  # type: BaseErrorStatus
 
     def __repr__(self):
-        return "<Status {} {}>".format(self.data, self.errors)
+        return "<Status {} {} {}>".format(self.data, self.errors,
+                                          self.tape_info)
 
     @abstractmethod
     def __getattr__(self, attr):

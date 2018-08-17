@@ -32,9 +32,15 @@ class Label:
                 "renderable objects")
 
         arg_it = iter(args)
-        self._rendered_items = [
-            [item.render(next(arg_it)) for item in line]
-            for line in self.items]
+        try:
+            self._rendered_items = [
+                [item.render(next(arg_it)) for item in line]
+                for line in self.items]
+        except StopIteration:
+            # the argument list was exhausted before all items had a value
+            raise TypeError("{cls} requires {argc} arguments, but {num} were given".format(
+                cls=self.__class__.__name__, argc=sum(len(x) for x in self.items), num=len(args)
+            ))
 
     @property
     def size(self) -> Tuple[int, int]:
@@ -73,7 +79,6 @@ class Label:
         print("calcsize", xdim, ydim)
         img = img.resize((xdim, height))
 
-        img.save("output.png")
         return img
 
 # print("".join(f"{x:08b}".replace("0", " ") for x in bytes(i)))

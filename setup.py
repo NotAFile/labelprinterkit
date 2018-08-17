@@ -19,7 +19,7 @@ setup(
     ],
     license='Apache License, Version 2.0',
     keywords='',
-    packages=find_packages(where='labelprinterkit/*'),
+    packages=find_packages(),
     install_requires=[
         'pillow',
         'pyusb',
