@@ -22,7 +22,7 @@ class MyLabel(label.Label):
 # Instantiate the label with specific data
 l = MyLabel("text1", "text2")
 # scan for a USB printer using the PyUSBBackend
-printer = P700(PyUSBBackend.auto()
+printer = P700(PyUSBBackend.auto())
 # Print!
 printer.print_label(l)
 ```
