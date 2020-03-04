@@ -27,6 +27,16 @@ printer = P700(PyUSBBackend.auto())
 printer.print_label(l)
 ```
 
+Example of using a better font:
+
+```python
+from PIL import Image, ImageFont
+SIZE = 60
+font = ImageFont.truetype("FreeSans.ttf", SIZE)
+# Use it in the label template, e.g.
+Text(font, pad_right=50)
+```
+
 The Following printers are currently supported:
 
  * Brother P-Touch PT-700 (aka P700)
