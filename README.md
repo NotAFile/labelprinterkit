@@ -16,7 +16,7 @@ from Labelprinterkit.printers.brother_pt700 import P700
 # In real usage, you will probably want to change the font of the text.
 class MyLabel(label.Label):
     items = [
-        items.Text(pad_right=50), items.Text()
+        [items.Text(pad_right=50), items.Text()]
     ]
 
 # Instantiate the label with specific data
