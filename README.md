@@ -37,6 +37,14 @@ font = ImageFont.truetype("FreeSans.ttf", SIZE)
 Text(font, pad_right=50)
 ```
 
+To use a Bluetooth connection:
+1. pair your device
+2. specify the serial device node when instantiating the printer:
+
+```
+printer = P700(BTSerialBackend.auto(devPath='/dev/ttyS8'))
+```
+
 The Following printers are currently supported:
 
  * Brother P-Touch PT-700 (aka P700)
@@ -50,6 +58,7 @@ but have not been tested (please tell us if they do!):
 The following backends are currently supported:
 
  * USB Printer Device Class via PyUSB
+ * Bluetooth Serial connection via PySerial
 
 The official source of this repository is at https://git.scc.kit.edu/scc-net/labelprinterkit.
 Pull requests and issues are also accepted on github at https://github.com/notafile/labelprinterkit.
