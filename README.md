@@ -47,6 +47,11 @@ but have not been tested (please tell us if they do!):
  * Brother H500
  * Brother E500
 
+The following printers have been tested to mostly work, although not
+officially supported (their protocol is similar, although not identical):
+
+* Brother P-touch CUBE Plus PTP710BT
+
 The following backends are currently supported:
 
  * USB Printer Device Class via PyUSB
