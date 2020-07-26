@@ -24,6 +24,7 @@ setup(
         'pillow',
         'pyusb',
         'packbits',
+        'pyserial'
     ],
     setup_requires=[
         'setuptools_scm'
