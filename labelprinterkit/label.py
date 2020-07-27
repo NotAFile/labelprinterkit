@@ -3,8 +3,12 @@ Labels are the Base class you derive your Labels from. A few simple Labels are
 provided for you.
 """
 from typing import Tuple
+import logging
 
 from PIL import Image
+
+
+logger = logging.getLogger(__name__)
 
 
 def _coord_add(tup1, tup2):
@@ -73,10 +77,10 @@ class Label:
             pos[1] += max(i.size[1] for i in line)
 
         xdim, ydim = img.size
-        print("presize", xdim, ydim, height)
+        logger.debug("presize %d %d %d", xdim, ydim, height)
         xdim = round((height / ydim) * xdim)
 
-        print("calcsize", xdim, ydim)
+        logger.debug("calcsize %d %d", xdim, ydim)
         img = img.resize((xdim, height))
 
         return img
@@ -108,10 +112,10 @@ class CenteredLabel(Label):
             pos[1] += max(i.size[1] for i in line)
 
         xdim, ydim = img.size
-        print("presize", xdim, ydim, height)
+        logger.debug("presize %d %d %d", xdim, ydim, height)
         xdim = round((height / ydim) * xdim)
 
-        print("calcsize", xdim, ydim)
+        logger.debug("calcsize %d %d", xdim, ydim)
         img = img.resize((xdim, height))
 
         return img
