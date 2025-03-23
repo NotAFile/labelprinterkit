@@ -1,3 +1,11 @@
+# Project Moved
+
+The official source repository is:
+https://git.scc.kit.edu/scc-net/labelprinterkit
+
+A public issue tracker is available at:
+https://github.com/ogelpre/labelprinterkit/
+
 ### Labelprinterkit
 
 Labelprinterkit is a Python3 library for creating and printing labels. It was
